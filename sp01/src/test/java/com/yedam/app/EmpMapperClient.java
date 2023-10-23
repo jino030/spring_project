@@ -2,6 +2,7 @@ package com.yedam.app;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
@@ -21,18 +22,61 @@ public class EmpMapperClient {
 	@Autowired
 	EmpMapper empMapper;
 	
-	@Test
+	//@Test
 	public void getEmpAll() {
 		List<EmpVO> list = empMapper.selectAllEmpInfo();
 		assertFalse(list.isEmpty());
 	}
 	
-	@Test
+	//@Test
 	public void getEmpInfo() {
 		EmpVO vo = new EmpVO();
-		vo.setEmployee_id("100");
+		vo.setEmployeeId(100);
 		EmpVO findVO = empMapper.selectEmpInfo(vo);
-		assertEquals(findVO.getLast_name(), "King");
+		assertEquals(findVO.getLastName(), "King");
 	}
 	
+	//@Test
+	public void insertEmpInfo() {
+		//등록
+		EmpVO empVO = new EmpVO();
+		empVO.setLastName("Kang");
+		empVO.setFirstName("San-Ha");
+		empVO.setEmail("test@google.com");
+		empVO.setJobId("IT_PROG");
+		
+		empMapper.insertEmpInfo(empVO);
+		assertNotEquals(empVO.getEmployeeId(), 0);
+	}
+	
+	//@Test
+	public void updateEmpInfo() {
+		//수정
+		EmpVO empVO = new EmpVO();
+		empVO.setEmployeeId(556);
+		EmpVO findVO = empMapper.selectEmpInfo(empVO);
+		
+		findVO.setSalary(1000);
+		int result = empMapper.updateEmpInfo(findVO);
+		assertEquals(result, 1);
+	}
+	
+	//@Test
+	public void updateDynamic() {
+		EmpVO empVO = new EmpVO();
+		empVO.setEmployeeId(556);
+		empVO.setFirstName("Hal-La");
+		
+		int result = empMapper.updateEmpInfoDynamic(empVO);
+		assertEquals(result, 1);
+	}
+	
+	@Test
+	public void deleteEmpInfo() {
+		EmpVO empVO = new EmpVO();
+		empVO.setEmployeeId(556);
+		
+		int result = empMapper.deleteEmpInfo(empVO.getEmployeeId());
+		assertEquals(result, 1);
+	}
 }
