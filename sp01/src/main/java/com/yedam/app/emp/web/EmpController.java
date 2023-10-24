@@ -51,7 +51,6 @@ public class EmpController {
 	// 등록 - process
 	@PostMapping("empInsert")
 	public String insertEmpInfoProcess(EmpVO empVO) {
-		System.out.println(empVO);
 		int empId = empService.insertEmpInfo(empVO);
 
 		String path = null;

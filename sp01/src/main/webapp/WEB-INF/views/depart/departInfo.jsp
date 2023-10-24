@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사원 등록</title>
+<title>부서 조회</title>
 <style>
 body {
   width: 500px;
@@ -43,29 +43,25 @@ div {
 </style>
 </head>
 <body>
-	<form action="empInsert" method="post">
+	<form>
 		<div>
-			<label>first_name : <input type="text" name="firstName"></label>
+			<label>department_id : <input type="text" name="departmentId" value="${departInfo.departmentId }" readonly></label>
 		</div>
 		<div>
-			<label>last_name : <input type="text" name="lastName"></label>
+			<label>department_name : <input type="text" name="departmentName" value="${departInfo.departmentName }"></label>
 		</div>
 		<div>
-			<label>email : <input type="text" name="email"></label>
+			<label>manager_id : <input type="text" name="managerId" value="${departInfo.managerId }" readonly></label>
 		</div>
 		<div>
-			<label>hire_date : <input type="date" name="hireDate" placeholder="yyyy-MM-dd"></label>
+			<label>location_id : <input type="text" name="locationId" value="${departInfo.locationId }"></label>
 		</div>
 		<div>
-			<label>job_id : <input type="text" name="jobId"></label>
-		</div>
-		<div>
-			<label>salary : <input type="number" name="salary"></label>
-		</div>
-		<div>
-			<button type="submit">등록</button>
-			<button type="button" onclick="location.href='empList'">목록으로</button>
+			<button type="button" id="updateBtn">수정</button>
+			<button type="button">삭제</button>
+			<button type="button" onclick="location.href='departList'">목록으로</button>
 		</div>
 	</form>
+
 </body>
 </html>

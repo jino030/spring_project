@@ -13,7 +13,7 @@
   crossorigin="anonymous"></script>
 <style>
 body {
-  width: 800px;
+  width: 500px;
   margin: 50px auto;
 }
 input, select {
@@ -28,7 +28,7 @@ input, select {
 
 button {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #007fff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -38,7 +38,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #004a96;
 }
 
 div {
