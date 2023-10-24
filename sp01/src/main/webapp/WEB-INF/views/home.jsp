@@ -14,11 +14,11 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <div>
-	<form action="parameterTest" method="post">
+	<form action="reqParamTest" method="post">
 		<input type="text" name="employeeId">
-		<input type="text" name="lastName">
+		<!-- <input type="text" name="lastName"> -->
 		<input type="text" name="jobId">
-		<button type="submit">post전송</button>
+		<button type="submit">전송</button>
 	</form>
 </div>
 </body>
