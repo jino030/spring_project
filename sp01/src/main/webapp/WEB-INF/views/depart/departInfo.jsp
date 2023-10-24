@@ -51,7 +51,7 @@ div {
 			<label>department_name : <input type="text" name="departmentName" value="${departInfo.departmentName }"></label>
 		</div>
 		<div>
-			<label>manager_id : <input type="text" name="managerId" value="${departInfo.managerId }" readonly></label>
+			<label>manager_id : <input type="text" name="managerId" value="${departInfo.managerId }"></label>
 		</div>
 		<div>
 			<label>location_id : <input type="text" name="locationId" value="${departInfo.locationId }"></label>
