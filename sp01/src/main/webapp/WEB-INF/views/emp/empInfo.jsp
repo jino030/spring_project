@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>사원 정보 조회</title>
+<link rel="stylesheet" href="/app/resources/css/emp.css">
 <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
 <style>
-body {
+form {
   width: 500px;
   margin: 50px auto;
 }
@@ -41,7 +42,7 @@ button:hover {
   background-color: #004a96;
 }
 
-div {
+form {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -77,14 +78,14 @@ div {
 		</div>
 		<div>
 			<button type="button" id="updateBtn">수정</button>
-			<button type="button">삭제</button>
+			<button type="button" onclick="location.href='empDelete?employeeId=${empInfo.employeeId}'">삭제</button>
 			<button type="button" onclick="location.href='empList'">목록으로</button>
 		</div>
 	</form>
 	<script>
 		// 자바스크립트 버전
 		document.querySelector('#updateBtn')
-						.addEventListener('click', updateEmpInfo);
+				.addEventListener('click', updateEmpInfo);
 		
 		function updateEmpInfo(event) {
 			// form 태그 내부의 input을 기반으로 수정할 대상 정보를 가져옴

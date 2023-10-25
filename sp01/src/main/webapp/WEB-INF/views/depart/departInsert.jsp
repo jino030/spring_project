@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>부서 등록</title>
+<link rel="stylesheet" href="/app/resources/css/emp.css">
 <style>
-body {
+form {
   width: 500px;
   margin: 50px auto;
 }
@@ -37,7 +38,7 @@ button:hover {
   background-color: #004a96;
 }
 
-div {
+form {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;

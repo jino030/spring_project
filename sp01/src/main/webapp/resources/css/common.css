@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.container {
+	margin-left: 0;
+	margin-right: 0;
+}
+.header {
+	padding: 20px 0	;
+	font-size: 20px
+}

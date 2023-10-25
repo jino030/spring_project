@@ -8,36 +8,45 @@
 <meta charset="UTF-8">
 <title>사원 전체조회</title>
 <link rel="stylesheet" href="/app/resources/css/emp.css">
+<link rel="stylesheet" href="/app/resources/css/common.css">
 </head>
 <body>
-	<button type="button" onclick="location.href='empInsert'">등록</button>
-	<table>
-		<thead>
-			<tr>
-				<th>NO.</th>
-				<th>employee_id</th>
-				<th>first_name</th>
-				<th>last_name</th>
-				<th>email</th>
-				<th>hire_date</th>
-				<th>job_id</th>
-				<th>salary</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="e" items="${empList}" varStatus="no">
-				<tr onclick="location.href='empInfo?employeeId=${e.employeeId}'">
-					<td>${no.count }</td>
-					<td>${e.employeeId }</td>
-					<td>${e.firstName }</td>
-					<td>${e.lastName }</td>
-					<td>${e.email }</td>
-					<td><fmt:formatDate value="${e.hireDate }" pattern="yyyy년 MM월 dd일" /></td>
-					<td>${e.jobId }</td>
-					<td><fmt:formatNumber value="${e.salary }" pattern="#,###원" /></td>
+	<div class="content">
+		<button type="button" onclick="location.href='empInsert'">등록</button>
+		<table>
+			<thead>
+				<tr>
+					<th>NO.</th>
+					<th>employee_id</th>
+					<th>first_name</th>
+					<th>last_name</th>
+					<th>email</th>
+					<th>hire_date</th>
+					<th>job_id</th>
+					<th>salary</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach var="e" items="${empList}" varStatus="no">
+					<tr onclick="location.href='empInfo?employeeId=${e.employeeId}'">
+						<td>${no.count }</td>
+						<td>${e.employeeId }</td>
+						<td>${e.firstName }</td>
+						<td>${e.lastName }</td>
+						<td>${e.email }</td>
+						<td><fmt:formatDate value="${e.hireDate }" pattern="yyyy년 MM월 dd일" /></td>
+						<td>${e.jobId }</td>
+						<td align="right"><fmt:formatNumber value="${e.salary }" pattern="#,###만원" /></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		let msg = `${result}`;
+		if(msg != ''){
+			alert(msg);
+		}
+	</script>
 </body>
 </html>
