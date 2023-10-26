@@ -26,6 +26,7 @@ public class BoardController {
 	public String getBoardList(Model model) {
 		List<BoardVO> list = boardService.getBoardList();
 		model.addAttribute("boardList", list);
+		System.out.println(list);
 		return "board/boardList";
 	}
 	
@@ -34,6 +35,7 @@ public class BoardController {
 	public String getBoard(BoardVO boardVO, Model model) {
 		BoardVO findVO = boardService.getBoard(boardVO);
 		model.addAttribute("info", findVO);
+		System.out.println(findVO);
 		return "board/boardInfo";
 	}
 	
@@ -52,6 +54,7 @@ public class BoardController {
 		int boardNo = boardService.insertBoard(boardVO);
 		
 		if(boardNo > -1) {
+			System.out.println(boardNo);
 			path = "redirect:boardList";
 		}
 		return path;
@@ -69,6 +72,7 @@ public class BoardController {
 	@PostMapping("boardUpdate")
 	@ResponseBody
 	public Map<String, Object> updateBoard(BoardVO boardVO) {
+		System.out.println(boardVO);
 		return boardService.updateBoard(boardVO);
 	}
 	
@@ -84,6 +88,8 @@ public class BoardController {
 		}else {
 			msg = "정상적으로 삭제되지 않았습니다.";
 		}
+		System.out.println(result);
+		System.out.println(msg);
 		ratt.addFlashAttribute("result", msg);
 		return "redirect:boardList";
 	}
