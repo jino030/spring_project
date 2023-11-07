@@ -18,6 +18,12 @@
 		<a class="nav-link" href="${pageContext.request.contextPath }/departInsert">부서정보등록</a>
 	</li>
 	<li class="nav-item">
+		<a class="nav-link" href="${pageContext.request.contextPath }/boardList">게시판목록</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="${pageContext.request.contextPath }/boardInsert">게시판등록</a>
+	</li>
+	<li class="nav-item">
 		<a class="nav-link disabled" aria-disabled="true">Disabled</a>
 	</li>
 </ul>

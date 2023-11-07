@@ -9,11 +9,14 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<context:property-placeholder location="classpath:config/path.properties"/>
+	
 	<!-- Enables the Spring MVC @Controller programming model : 빈을 제외한 어노테이션을 읽음.. -->
 	<annotation-driven />
 
 	<!-- [정적 리소스 경로 매핑..] Handles HTTP GET requests(= get방식의 접근을 허용) for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/images/**" location="${file.loading.path}" />
 
 	<!-- [View Resolver] Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,8 +38,10 @@
 	    <beans:property name="order" value="1" />
 	</beans:bean>
 	
+	
+	<!-- multipartResolver : 파일업로드위해 지정했지만 실제 처리영역은 넓다. -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	
 	<context:component-scan base-package="com.yedam.app" />
-	
-	
 	
 </beans:beans>

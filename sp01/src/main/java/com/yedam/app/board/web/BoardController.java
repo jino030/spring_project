@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,7 +27,6 @@ public class BoardController {
 	public String getBoardList(Model model) {
 		List<BoardVO> list = boardService.getBoardList();
 		model.addAttribute("boardList", list);
-		System.out.println(list);
 		return "board/boardList";
 	}
 	
@@ -35,7 +35,6 @@ public class BoardController {
 	public String getBoard(BoardVO boardVO, Model model) {
 		BoardVO findVO = boardService.getBoard(boardVO);
 		model.addAttribute("info", findVO);
-		System.out.println(findVO);
 		return "board/boardInfo";
 	}
 	
@@ -54,7 +53,6 @@ public class BoardController {
 		int boardNo = boardService.insertBoard(boardVO);
 		
 		if(boardNo > -1) {
-			System.out.println(boardNo);
 			path = "redirect:boardList";
 		}
 		return path;
@@ -63,16 +61,17 @@ public class BoardController {
 	
 	// 수정 - 페이지 : URI - boardUpdate / PARAMETER - BoardVO / RETURN - board/boardUpdate
 	@GetMapping("boardUpdate")
-	public String updateBoardForm() {
+	public String updateBoardForm(BoardVO boardVO, Model model) {
+		BoardVO findVO = boardService.getBoard(boardVO);
+		model.addAttribute("info", findVO);
 		return "board/boardUpdate";
 	}
 	
 	
-	// 수정 - 처리 : URI - boardUpdate / PARAMETER - BoardVO / RETURN - 수정결과 데이터(Map):서비스실행결과를 그냥 리턴..
+	// 수정 - JSON 방식처리 : URI - boardUpdate / PARAMETER - BoardVO / RETURN - 수정결과 데이터(Map):서비스실행결과를 그냥 리턴..
 	@PostMapping("boardUpdate")
 	@ResponseBody
-	public Map<String, Object> updateBoard(BoardVO boardVO) {
-		System.out.println(boardVO);
+	public Map<String, Object> updateBoard(@RequestBody BoardVO boardVO) {
 		return boardService.updateBoard(boardVO);
 	}
 	
@@ -88,8 +87,6 @@ public class BoardController {
 		}else {
 			msg = "정상적으로 삭제되지 않았습니다.";
 		}
-		System.out.println(result);
-		System.out.println(msg);
 		ratt.addFlashAttribute("result", msg);
 		return "redirect:boardList";
 	}
